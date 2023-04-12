@@ -6,6 +6,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
+import {FormsModule} from "@angular/forms";
+import {GymService} from "./app/gym.service";
 
 if (environment.production) {
   enableProdMode();
@@ -16,5 +18,7 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     importProvidersFrom(IonicModule.forRoot({})),
     provideRouter(routes),
+    FormsModule,
+    GymService,
   ],
 });

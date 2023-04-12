@@ -1,17 +1,44 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      My Fitness Center - Members
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" [fullscreen]="true">
+<!--  <h1>Members</h1>-->
+  <br>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card>
+      <ion-card-header>
+          <ion-card-title>Members</ion-card-title>
+          <ion-card-subtitle>See below details about the gym members</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-list>
+              <ion-item lines="inset">
+                  <ion-icon name="person-outline" slot="start"></ion-icon>
+                  <ion-label>
+                      <h3>Igor Candido Jacon</h3>
+                      <p>Student Number: 23736537</p>
+                  </ion-label>
+<!--                  <ion-button fill="outline" [routerLink]="['/edit', id]">-->
+<!--                      <ion-icon name="eye-outline"></ion-icon>-->
+<!--                  </ion-button>-->
+<!--                  <ion-button fill="outline" color="danger" [routerLink]="['/delete', id]">-->
+<!--                      <ion-icon name="trash-bin-outline"></ion-icon>-->
+<!--                  </ion-button>-->
+              </ion-item>
+          </ion-list>
+      </ion-card-content>
+  </ion-card>
+
+  <br>
+
+  <ion-button [routerLink]="['/create']" id="add-member" expand="block" fill="solid" shape="round">
+      <ion-icon name="person-add-outline" slot="start"></ion-icon>
+      New Member
+  </ion-button>
+
 </ion-content>
