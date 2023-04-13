@@ -1,8 +1,9 @@
 // Service for managing gym members
 import {Injectable} from "@angular/core";
+import { Storage } from '@ionic/storage-angular';
 
-const gender = ["Male", "Female", "Unspecified"]
-const membershipType = ["Basic", "Premium", "Corporate", "Student", "Day Pass"]
+export const genders = ["Male", "Female", "Unspecified"]
+export const membershipTypes = ["Basic", "Premium", "Corporate", "Student", "Day Pass"]
 export interface GymMember {
   id : number;
   fullName : string;
@@ -14,33 +15,50 @@ export interface GymMember {
   email : string;
   address : string;
   emergencyNumber : number;
-  medicalCondition : string;
+  medicalCondition ?: string;
+  isTrial : boolean;
 }
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class GymService {
-  private members : GymMember[] = [];
+  private _storage: Storage | null = null;
+  // private members : GymMember[] = [];
 
-  public addMember(member : GymMember): void {
-    this.members.push(member);
+  constructor(private storage: Storage) {
+    this.init();
   }
-  public getMembers = (): GymMember[] => {
-    return this.members;
+
+  async init() {
+    // If using, define drivers here: await this.storage.defineDriver(/*...*/);
+    const storage = await this.storage.create();
+    this._storage = storage;
   }
-  getMember = (id : number): GymMember|null => {
-    for (let memberKey in this.members) {
-      if (this.members[memberKey].id == id) {
-        return this.members[memberKey];
-      }
-    }
-    // return null if no member is found
-    return null;
+
+  async addMember(key: string, value: GymMember) {
+    await this._storage?.set(key, value);
   }
-  public deleteMember = (id : number): void => {
-    for (let memberKey in this.members) {
-      if (this.members[memberKey].id == id) {
-        this.members.splice(parseInt(memberKey), 1)
-      }
-    }
-  }
+
+  // public addMember(member : GymMember): void {
+  //   this.members.push(member)
+  // }
+
+  // public getMembers() : GymMember[] {
+  //   return this.members;
+  // }
+  // getMember = (id : number): GymMember|null => {
+  //   for (let memberKey in this.members) {
+  //     if (this.members[memberKey].id == id) {
+  //       return this.members[memberKey];
+  //     }
+  //   }
+  //   // return null if no member is found
+  //   return null;
+  // }
+  // public deleteMember = (id : number): void => {
+  //   for (let memberKey in this.members) {
+  //     if (this.members[memberKey].id == id) {
+  //       this.members.splice(parseInt(memberKey), 1)
+  //     }
+  //   }
+  // }
 }

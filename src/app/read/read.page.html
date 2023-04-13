@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ memberObj.fullName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true">
+  <h1>Details about {{ memberObj.fullName }}</h1>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h1>Name</h1>
+        <p>{{ memberObj.fullName }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h1>Date of Birth</h1>
+        <p>{{ memberObj.dob }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h1>Gender</h1>
+        <p>{{ memberObj.gender }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h1>Membership Type</h1>
+        <p>{{ memberObj.membership }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h1>Start Day</h1>
+        <p>{{ memberObj.startDay }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h1>Contact Number</h1>
+        <p>{{ memberObj.contactNumber }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h1>Email</h1>
+        <p>{{ memberObj.email }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h1>Address</h1>
+        <p>{{ memberObj.address }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h1>Emergency Number</h1>
+        <p>{{ memberObj.emergencyNumber }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="memberObj.medicalCondition">
+      <ion-label>
+        <h1>Medical Condition</h1>
+        <p>{{ memberObj.medicalCondition }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" fill="solid" size="large" [routerLink]="['/update/', memberObj.id]" router-direction="back">Update</ion-button>
+  <br>
+  <ion-button expand="full" color="danger" size="large" [routerLink]="['/delete/', memberObj.id]" router-direction="back">Delete</ion-button>
+  <br>
+  <ion-button expand="full" color="light" size="large" [routerLink]="['/tabs/tab2']" router-direction="back">Back</ion-button>
+</ion-content>

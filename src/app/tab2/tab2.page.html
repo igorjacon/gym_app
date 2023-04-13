@@ -7,28 +7,25 @@
 </ion-header>
 
 <ion-content class="ion-padding" [fullscreen]="true">
-<!--  <h1>Members</h1>-->
-  <br>
-
   <ion-card>
       <ion-card-header>
-          <ion-card-title>Members</ion-card-title>
-          <ion-card-subtitle>See below details about the gym members</ion-card-subtitle>
+          <ion-card-title>Browse</ion-card-title>
+          <ion-card-subtitle>
+            See below a list of all gym members. <br>
+            To see more click on the icon on the right
+          </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
           <ion-list>
-              <ion-item lines="inset">
+              <ion-item lines="inset" *ngFor="let member of members">
                   <ion-icon name="person-outline" slot="start"></ion-icon>
                   <ion-label>
-                      <h3>Igor Candido Jacon</h3>
-                      <p>Student Number: 23736537</p>
+                      <h3>{{ member.fullName }}</h3>
+                      <p>{{ member.email }} - {{ member.contactNumber }}</p>
                   </ion-label>
-<!--                  <ion-button fill="outline" [routerLink]="['/edit', id]">-->
-<!--                      <ion-icon name="eye-outline"></ion-icon>-->
-<!--                  </ion-button>-->
-<!--                  <ion-button fill="outline" color="danger" [routerLink]="['/delete', id]">-->
-<!--                      <ion-icon name="trash-bin-outline"></ion-icon>-->
-<!--                  </ion-button>-->
+                  <ion-button fill="clear" size="large" [routerLink]="['/read', member.id]">
+                      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                  </ion-button>
               </ion-item>
           </ion-list>
       </ion-card-content>
@@ -36,7 +33,7 @@
 
   <br>
 
-  <ion-button [routerLink]="['/create']" id="add-member" expand="block" fill="solid" shape="round">
+  <ion-button [routerLink]="['/tabs/create']" id="add-member" expand="block" fill="solid" shape="round">
       <ion-icon name="person-add-outline" slot="start"></ion-icon>
       New Member
   </ion-button>

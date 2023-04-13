@@ -24,3 +24,20 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+ion-title {
+  --color: #ffad00;
+}
+ion-content {
+  --background: #ffad00;
+  --color: #fff;
+}
+#add-member {
+  margin: 10px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+.input-errors {
+  color: red;
+  padding-left: 20px;
+}

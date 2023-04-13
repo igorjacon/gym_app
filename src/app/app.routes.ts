@@ -6,7 +6,15 @@ export const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
   },
   {
-    path: 'create',
-    loadComponent: () => import('./create/create.page').then( m => m.CreatePage)
+    path: 'read/:id',
+    loadComponent: () => import('./read/read.page').then( m => m.ReadPage)
+  },
+  {
+    path: 'update/:id',
+    loadComponent: () => import('./update/update.page').then( m => m.UpdatePage)
+  },
+  {
+    path: 'delete/:id',
+    loadComponent: () => import('./delete/delete.page').then( m => m.DeletePage)
   },
 ];
