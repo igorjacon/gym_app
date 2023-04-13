@@ -85,7 +85,7 @@ export class CreatePage {
 
     // Check if ID is unique
     let savedMembers = await this.storage.keys();
-    if (savedMembers.includes(this.memberId.toString())) {
+    if (savedMembers.includes(this.memberId.toString()) || this.memberId == null) {
         if (toast) {
           toast.setAttribute('color', 'danger');
           toast.setAttribute('message', "Please fix the errors.");
