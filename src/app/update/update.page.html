@@ -13,7 +13,7 @@
       <ion-card-content>
         <form [formGroup]="myForm">
           <ion-item>
-            <ion-input label="Full Name" labelPlacement="floating" type="text" formControlName="fullName" [(ngModel)]="fullName">
+            <ion-input label="Full Name" labelPlacement="floating" type="text" formControlName="fullName" [(ngModel)]="memberObj.fullName">
           </ion-input>
           </ion-item>
           <p class="input-errors" *ngIf="!valid && myForm.controls.fullName.errors?.['required']">
@@ -24,7 +24,7 @@
               <ion-datetime-button datetime="dob"></ion-datetime-button>
               <ion-modal [keepContentsMounted]="true">
                 <ng-template>
-                  <ion-datetime presentation="date" id="dob" formControlName="dob" [(ngModel)]="dob"></ion-datetime>
+                  <ion-datetime presentation="date" id="dob" formControlName="dob" [(ngModel)]="memberObj.dob"></ion-datetime>
                 </ng-template>
               </ion-modal>
           </ion-item>
@@ -33,7 +33,7 @@
           </span>
           <ion-item>
             <ion-label>Gender</ion-label>
-            <ion-radio-group formControlName="gender" [(ngModel)]="gender" id="gender">
+            <ion-radio-group formControlName="gender" [(ngModel)]="memberObj.gender" id="gender">
               <ion-grid>
                 <ion-row>
                   <ion-col *ngFor="let genderType of genders">
@@ -47,7 +47,7 @@
             This field is required.
           </span>
           <ion-item>
-            <ion-select [(ngModel)]="membership" formControlName="membership" label="Membership Type">
+            <ion-select [(ngModel)]="memberObj.membership" formControlName="membership" label="Membership Type">
                 <ion-select-option *ngFor="let type of membershipTypes" value="{{ type }}">{{ type }}</ion-select-option>
             </ion-select>
           </ion-item>
@@ -59,7 +59,7 @@
             <ion-datetime-button datetime="startDate"></ion-datetime-button>
             <ion-modal [keepContentsMounted]="true">
               <ng-template>
-                <ion-datetime formControlName="startDate" presentation="date" [(ngModel)]="startDay" id="startDate"></ion-datetime>
+                <ion-datetime formControlName="startDate" presentation="date" [(ngModel)]="memberObj.startDay" id="startDate"></ion-datetime>
               </ng-template>
             </ion-modal>
           </ion-item>
@@ -67,13 +67,13 @@
             This field is required.
           </span>
           <ion-item>
-            <ion-input label="Contact Number" labelPlacement="floating" type="number" formControlName="contact" [(ngModel)]="contactNumber"></ion-input>
+            <ion-input label="Contact Number" labelPlacement="floating" type="number" formControlName="contact" [(ngModel)]="memberObj.contactNumber"></ion-input>
           </ion-item>
           <span class="input-errors" *ngIf="!valid && myForm.controls.contact.errors?.['required']">
             This field is required.
           </span>
           <ion-item>
-            <ion-input label="Email" labelPlacement="floating" type="email" formControlName="email" [(ngModel)]="email"></ion-input>
+            <ion-input label="Email" labelPlacement="floating" type="email" formControlName="email" [(ngModel)]="memberObj.email"></ion-input>
           </ion-item>
           <span class="input-errors" *ngIf="!valid && myForm.controls.email.errors?.['required']">
             Email is required.
@@ -82,22 +82,22 @@
             Invalid email format.
           </span>
           <ion-item>
-            <ion-input label="Address" labelPlacement="floating" type="text" formControlName="address" [(ngModel)]="address"></ion-input>
+            <ion-input label="Address" labelPlacement="floating" type="text" formControlName="address" [(ngModel)]="memberObj.address"></ion-input>
           </ion-item>
           <span class="input-errors" *ngIf="!valid && myForm.controls.address.errors?.['required']">
             This field is required.
           </span>
           <ion-item>
-            <ion-input label="Emergency Number" labelPlacement="floating" type="number" [(ngModel)]="emergencyNumber" formControlName="emergencyNumber"></ion-input>
+            <ion-input label="Emergency Number" labelPlacement="floating" type="number" [(ngModel)]="memberObj.emergencyNumber" formControlName="emergencyNumber"></ion-input>
           </ion-item>
           <span class="input-errors" *ngIf="!valid && myForm.controls.emergencyNumber.errors?.['required']">
             This field is required.
           </span>
           <ion-item>
-            <ion-textarea label="Medical Condition" labelPlacement="floating" [(ngModel)]="medicalCondition" formControlName="medicalCondition"></ion-textarea>
+            <ion-textarea label="Medical Condition" labelPlacement="floating" [(ngModel)]="memberObj.medicalCondition" formControlName="medicalCondition"></ion-textarea>
           </ion-item>
           <ion-item>
-            <ion-checkbox formControlName="isTrial" labelPlacement="end" [(ngModel)]="isTrial" justify="start">Trial</ion-checkbox>
+            <ion-checkbox formControlName="isTrial" labelPlacement="end" [(ngModel)]="memberObj.isTrial" justify="start">Trial</ion-checkbox>
           </ion-item>
         </form>
         <br>
