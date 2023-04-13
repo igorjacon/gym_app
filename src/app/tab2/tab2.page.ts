@@ -19,11 +19,8 @@ import {Storage} from "@ionic/storage-angular";
 export class Tab2Page {
   members : GymMember[] = [];
   constructor(private gymService : GymService, private storage: Storage) {}
-  async ionViewDidEnter() {
-    this.members = [];
-    // await this.storage.clear();
-    await this.storage.forEach((member) => {
-      this.members.push(member);
-    });
+
+  ionViewWillEnter() {
+    this.members = this.gymService.getMembers();
   }
 }

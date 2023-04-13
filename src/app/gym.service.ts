@@ -34,31 +34,23 @@ export class GymService {
     this._storage = storage;
   }
 
-  async addMember(key: string, value: GymMember) {
-    await this._storage?.set(key, value);
+  addMember(key: string, value: GymMember) {
+    this._storage?.set(key, value);
   }
 
-  // public addMember(member : GymMember): void {
-  //   this.members.push(member)
-  // }
+  getMember(key : string) {
+    return this._storage?.get(key);
+  }
+  deleteMember(id : string) {
+    this.storage.remove(id.toString());
+  }
 
-  // public getMembers() : GymMember[] {
-  //   return this.members;
-  // }
-  // getMember = (id : number): GymMember|null => {
-  //   for (let memberKey in this.members) {
-  //     if (this.members[memberKey].id == id) {
-  //       return this.members[memberKey];
-  //     }
-  //   }
-  //   // return null if no member is found
-  //   return null;
-  // }
-  // public deleteMember = (id : number): void => {
-  //   for (let memberKey in this.members) {
-  //     if (this.members[memberKey].id == id) {
-  //       this.members.splice(parseInt(memberKey), 1)
-  //     }
-  //   }
-  // }
+  getMembers() {
+    let members : GymMember[] = [];
+    this.storage.forEach((member) => {
+      members.push(member);
+    });
+    return members;
+  }
+
 }

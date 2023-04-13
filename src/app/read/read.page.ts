@@ -14,16 +14,32 @@ import {GymMember, GymService} from "../gym.service";
   providers: [GymService],
   imports: [IonicModule, CommonModule, FormsModule, RouterLink]
 })
-export class ReadPage implements OnInit {
+export class ReadPage {
   param : string = "";
   memberObj : GymMember = <GymMember>{};
+
+  public alertButtons = [
+    {
+      text: 'No',
+      role: 'cancel',
+      handler: () => {}
+    },
+    {
+      text: 'Yes',
+      role: 'confirm',
+      handler: () => {
+        this.gymService.deleteMember(this.param);
+        this.router.navigateByUrl('/tabs/tab2')
+      }
+    }
+  ];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private gymService : GymService,
               private storage : Storage) {}
 
-  async ngOnInit() {
+  async ionViewDidEnter() {
     this.param = this.route.snapshot.params['id'];
     this.memberObj = await this.storage.get(this.param);
   }

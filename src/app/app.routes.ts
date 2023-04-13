@@ -13,8 +13,4 @@ export const routes: Routes = [
     path: 'update/:id',
     loadComponent: () => import('./update/update.page').then( m => m.UpdatePage)
   },
-  {
-    path: 'delete/:id',
-    loadComponent: () => import('./delete/delete.page').then( m => m.DeletePage)
-  },
 ];

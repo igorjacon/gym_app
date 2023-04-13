@@ -15,8 +15,9 @@
       <ion-card-content>
         <form [formGroup]="myForm">
           <ion-item>
-            <ion-input type="number" labelPlacement="floating" label="ID" id="userId" formControlName="memberId" [readonly]="true" [(ngModel)]="memberId"></ion-input>
+            <ion-input type="number" labelPlacement="floating" label="ID" id="userId" formControlName="memberId" [(ngModel)]="memberId"></ion-input>
           </ion-item>
+          <p class="input-errors">{{ uniqueIdError }}</p>
           <ion-item>
             <ion-input
               label="Full Name"

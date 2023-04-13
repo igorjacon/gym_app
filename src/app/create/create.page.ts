@@ -44,6 +44,7 @@ export class CreatePage {
   ];
   idCounter : number = 0;
   valid: boolean = false;
+  uniqueIdError = "";
 
   constructor(private gymService : GymService, private storage: Storage) {
     // Initialize member object with default values
@@ -74,7 +75,7 @@ export class CreatePage {
     isTrial: new FormControl('', []),
   });
 
-  async ngOnInit() {
+  async ionViewDidEnter() {
     this.idCounter = await this.storage.length()+1;
     this.memberId = this.idCounter;
   }
@@ -83,17 +84,13 @@ export class CreatePage {
     let toast = await document.querySelector('ion-toast');
 
     // Check if ID is unique
-    let idInput = await document.getElementById("userId");
     let savedMembers = await this.storage.keys();
     if (savedMembers.includes(this.memberId.toString())) {
         if (toast) {
           toast.setAttribute('color', 'danger');
           toast.setAttribute('message', "Please fix the errors.");
         }
-        if (idInput) {
-          idInput.classList.add('ion-invalid');
-          idInput.setAttribute('error-text', 'The ID must be unique');
-        }
+        this.uniqueIdError = "The ID must be unique"
         this.valid = false;
         return;
     }
@@ -125,6 +122,7 @@ export class CreatePage {
     await this.storage.set(this.memberId.toString(), member);
     if (toast) {
       toast.setAttribute('color', 'success');
+      toast.setAttribute('message', 'New member added successfully');
     }
 
     // Reset form

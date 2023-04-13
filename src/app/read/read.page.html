@@ -68,11 +68,24 @@
         <p>{{ memberObj.medicalCondition }}</p>
       </ion-label>
     </ion-item>
+    <ion-item>
+      <ion-label>
+        <h1>Trial?</h1>
+        <p>{{ memberObj.isTrial ? 'Yes' : 'No' }}</p>
+      </ion-label>
+    </ion-item>
   </ion-list>
 
   <ion-button expand="full" fill="solid" size="large" [routerLink]="['/update/', memberObj.id]" router-direction="back">Update</ion-button>
   <br>
-  <ion-button expand="full" color="danger" size="large" [routerLink]="['/delete/', memberObj.id]" router-direction="back">Delete</ion-button>
+  <ion-button expand="full" color="danger" size="large" id="confirm-delete-{{ memberObj.id }}">Delete</ion-button>
   <br>
   <ion-button expand="full" color="light" size="large" [routerLink]="['/tabs/tab2']" router-direction="back">Back</ion-button>
+  <ion-alert
+    trigger="confirm-delete-{{ memberObj.id }}"
+    header="Warning!"
+    sub-header="Are you sure you want to delete this user?"
+    message="This action cannot be undone"
+    [buttons]="alertButtons"
+></ion-alert>
 </ion-content>
