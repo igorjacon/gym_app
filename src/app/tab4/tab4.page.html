@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Trials</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+      <ion-card-header>
+          <ion-card-title>Trial Members</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-list>
+              <ion-item lines="inset" *ngFor="let member of trialMembers">
+                  <ion-icon name="person-outline" slot="start"></ion-icon>
+                  <ion-label>
+                      <h3>{{ member.fullName }}</h3>
+                      <p>{{ member.email }} - {{ member.contactNumber }}</p>
+                  </ion-label>
+                  <ion-button fill="clear" size="large" [routerLink]="['/read', member.id]">
+                      <ion-icon name="eye-outline"></ion-icon>
+                  </ion-button>
+              </ion-item>
+          </ion-list>
+      </ion-card-content>
+  </ion-card>
+</ion-content>
