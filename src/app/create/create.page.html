@@ -42,8 +42,10 @@
           <span class="input-errors" *ngIf="!valid && myForm.controls.dob.errors?.['required']">
             This field is required.
           </span>
-          <ion-item>
+          <ion-item lines="none">
             <ion-label>Gender</ion-label>
+          </ion-item>
+          <ion-item>
             <ion-radio-group formControlName="gender" [(ngModel)]="gender" *ngFor="let genderType of genders">
                 <ion-radio style="padding-right: 5px" labelPlacement="end" value="{{ genderType }}">{{ genderType }}</ion-radio>
             </ion-radio-group>
