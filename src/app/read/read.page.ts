@@ -39,7 +39,7 @@ export class ReadPage {
               private gymService : GymService,
               private storage : Storage) {}
 
-  async ionViewDidEnter() {
+  async ionViewWillEnter() {
     this.param = this.route.snapshot.params['id'];
     this.memberObj = await this.storage.get(this.param);
   }

@@ -31,24 +31,24 @@ export class UpdatePage {
               private gymService : GymService,
               private storage : Storage) {}
 
-  async ionViewDidEnter() {
+  async ionViewWillEnter() {
     this.param = this.route.snapshot.params['id'];
     this.memberObj = await this.storage.get(this.param);
   }
 
   // Apply validation for form fields validations
     public myForm = new FormGroup({
-      fullName: new FormControl('', [Validators.required]),
-      dob: new FormControl('', [Validators.required]),
-      gender: new FormControl('', [Validators.required]),
-      membership: new FormControl('', [Validators.required]),
-      startDate: new FormControl('', [Validators.required]),
-      contact: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      address: new FormControl('', [Validators.required]),
-      emergencyNumber: new FormControl('', [Validators.required]),
-      medicalCondition: new FormControl('', []),
-      isTrial: new FormControl('', []),
+      fullName: new FormControl(this.memberObj.fullName, [Validators.required]),
+      dob: new FormControl(this.memberObj.dob, [Validators.required]),
+      gender: new FormControl(this.memberObj.gender, [Validators.required]),
+      membership: new FormControl(this.memberObj.membership, [Validators.required]),
+      startDate: new FormControl(this.memberObj.startDay, [Validators.required]),
+      contact: new FormControl(this.memberObj.contactNumber, [Validators.required]),
+      email: new FormControl(this.memberObj.email, [Validators.required, Validators.email]),
+      address: new FormControl(this.memberObj.address, [Validators.required]),
+      emergencyNumber: new FormControl(this.memberObj.emergencyNumber, [Validators.required]),
+      medicalCondition: new FormControl(this.memberObj.medicalCondition, []),
+      isTrial: new FormControl(this.memberObj.isTrial, []),
     });
 
   async updateMember() {

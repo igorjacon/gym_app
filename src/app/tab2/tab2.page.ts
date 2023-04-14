@@ -23,4 +23,10 @@ export class Tab2Page {
   ionViewWillEnter() {
     this.members = this.gymService.getMembers();
   }
+  handleRefresh(event:any) {
+    setTimeout(() => {
+      this.members = this.gymService.getMembers();
+      event.target.complete();
+    }, 2000);
+  };
 }

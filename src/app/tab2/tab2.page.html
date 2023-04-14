@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content class="ion-padding" [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card>
       <ion-card-header>
           <ion-card-title>Browse</ion-card-title>

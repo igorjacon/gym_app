@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" [fullscreen]="true">
+<ion-content [fullscreen]="true">
   <ion-card>
       <ion-card-header>
           <ion-card-title>Create a new member</ion-card-title>
@@ -44,14 +44,8 @@
           </span>
           <ion-item>
             <ion-label>Gender</ion-label>
-            <ion-radio-group formControlName="gender" [(ngModel)]="gender" id="gender">
-              <ion-grid>
-                <ion-row>
-                  <ion-col *ngFor="let genderType of genders">
-                    <ion-radio labelPlacement="end" value="{{ genderType }}">{{ genderType }}</ion-radio>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
+            <ion-radio-group formControlName="gender" [(ngModel)]="gender" *ngFor="let genderType of genders">
+                <ion-radio style="padding-right: 5px" labelPlacement="end" value="{{ genderType }}">{{ genderType }}</ion-radio>
             </ion-radio-group>
           </ion-item>
           <span class="input-errors" *ngIf="!valid && myForm.controls.gender.errors?.['required']">
